@@ -136,8 +136,7 @@ jobs:
             # We need to support Go 1.21 which requires a minimum macosx of 10.15
             # https://go.dev/wiki/MinimumRequirements#macos-ne-os-x-aka-darwindarwin
             export MACOSX_DEPLOYMENT_TARGET=10.15
-            export CFLAGS="-mmacosx-version-min=$MACOSX_DEPLOYMENT_TARGET"
-            export LDFLAGS="-mmacosx-version-min=$MACOSX_DEPLOYMENT_TARGET"
+            export RUSTFLAGS="-C link-arg=-mmacosx-version-min=$MACOSX_DEPLOYMENT_TARGET"
           fi
           env
 
