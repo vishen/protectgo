@@ -139,6 +139,7 @@ jobs:
             export CFLAGS="-mmacosx-version-min=$MACOSX_DEPLOYMENT_TARGET"
             export LDFLAGS="-mmacosx-version-min=$MACOSX_DEPLOYMENT_TARGET"
           fi
+          env
 
           cd crates/protect-ffi-c
           cargo build --release --target ${{ matrix.rust_target }}
