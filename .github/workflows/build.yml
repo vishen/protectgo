@@ -136,7 +136,8 @@ jobs:
             # We need to support Go 1.21 which requires a minimum macosx of 10.15
             # https://go.dev/wiki/MinimumRequirements#macos-ne-os-x-aka-darwindarwin
             export MACOSX_DEPLOYMENT_TARGET=10.15
-            export RUSTFLAGS="-C link-arg=-mmacosx-version-min=$MACOSX_DEPLOYMENT_TARGET"
+            export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
+            export RUSTFLAGS="-C link-arg=-mmacosx-version-min=$MACOSX_DEPLOYMENT_TARGET -C link-arg=-isysroot -C link-arg=${SDKROOT}"
           fi
           env
 
