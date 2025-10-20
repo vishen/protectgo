@@ -142,7 +142,13 @@ jobs:
           env
 
           cd crates/protect-ffi-c
+
+          cargo clean
           cargo build --release --target ${{ matrix.rust_target }}
+
+          if [[ "${{ matrix.platform }}" == darwin* ]]; then
+            otool -l target/${{ matrix.rust_target }}/release/libprotect_ffi.a | grep LC_BUILD_VERSION -A 5
+          fi
 
       - name: Copy library
         run: |
