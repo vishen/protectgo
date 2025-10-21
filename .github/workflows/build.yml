@@ -134,7 +134,7 @@ jobs:
         run: |
           if [[ "${{ matrix.platform}}" == darwin* ]]; then
             # https://go.dev/wiki/MinimumRequirements#macos-ne-os-x-aka-darwindarwin
-            export MACOSX_DEPLOYMENT_TARGET=11.0
+            export MACOSX_DEPLOYMENT_TARGET=11.3
             export SDKROOT=$(xcrun --sdk macosx --show-sdk-path)
             export RUSTFLAGS="-C link-arg=-mmacosx-version-min=$MACOSX_DEPLOYMENT_TARGET -C link-arg=-isysroot -C link-arg=${SDKROOT}"
           fi
